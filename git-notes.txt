@@ -27,4 +27,7 @@ Fast-forward
  1 file changed, 11 insertions(+)
  create mode 100644 git-notes.txt
 
+switch back to your own repository
+$ git checkout BE09
+
  push to remote repository
