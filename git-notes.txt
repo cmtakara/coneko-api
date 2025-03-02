@@ -1,3 +1,6 @@
+Here is a video that may help
+https://www.youtube.com/watch?v=nCKdihvneS0
+
 create a new branch and switch to it at the same time, you can run the git checkout command with the -b switch:
 $ git checkout -b BE09
 Switched to a new branch "BE09"
@@ -13,10 +16,23 @@ $ git add -A
 commit changes on your branch$ git commit -m 'BE09 -added steps for collaboration'
 $ git commit -m 'BE09 -added steps for collaboration'
 
+push the branch that you just created to the remote repository
+$ git push origin BE09
+
+=========================
+From here, go to github to the code repository.  You should see a green button indicating
+that you can make a new pull request 'compare & pull request'
+you want to request to merge your branch on to the main one
+'create pull request'
+once you create the pull request, someone else needs to review and approve it
 
 
 
-
+=========================
+The below steps will make it so that you are merging directly on to the main 
+branch with no pull request
+    ----- don't do that for this project, but you may want to for others
+=========================
 checkout the main branch so that you can compare your code to any other potentially updated
 code to ensure no merge conflicts, or resolve those that do occur.
 $ git checkout main
@@ -31,7 +47,5 @@ Fast-forward
  1 file changed, 11 insertions(+)
  create mode 100644 git-notes.txt
 
-switch back to your own repository
-$ git checkout BE09
-
  push to remote repository
+ $ git push origin main
