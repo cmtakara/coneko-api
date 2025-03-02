@@ -9,3 +9,22 @@ Add the new files that you have created
 $ git add .
 or 
 $ git add -A
+
+commit changes on your branch$ git commit -m 'BE09 -added steps for collaboration'
+$ git commit -m 'BE09 -added steps for collaboration'
+
+checkout the main branch so that you can compare your code to any other potentially updated
+code to ensure no merge conflicts, or resolve those that do occur.
+$ git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+
+merge your branch with the main branch
+$ git merge BE09
+Updating 99610df..5cc267b
+Fast-forward
+ git-notes.txt | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+ create mode 100644 git-notes.txt
+
+ push to remote repository
