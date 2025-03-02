@@ -1,0 +1,11 @@
+create a new branch and switch to it at the same time, you can run the git checkout command with the -b switch:
+$ git checkout -b BE09
+Switched to a new branch "BE09"
+This is shorthand for:
+$ git branch BE09
+$ git checkout BE09
+
+Add the new files that you have created
+$ git add .
+or 
+$ git add -A
