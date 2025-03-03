@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
-const messageSchema = new Schema([
+const messageSchema = new Schema(
   {
     user: {
       type: String,
@@ -27,7 +27,7 @@ const messageSchema = new Schema([
     gameRegion: {
       type: String,
     },
-    dateTime: {
+    scheduledTime: {
       type: Date,
     },
     recurrences: {
@@ -38,7 +38,7 @@ const messageSchema = new Schema([
     },
     gameImage: {
       type: String,
-      default: category,
+      default: "category",
     },
     inviteCode: {
       type: String,
@@ -52,9 +52,9 @@ const messageSchema = new Schema([
   },
   {
     timestamps: true,
-  },
-]);
+  }
+);
 
-const Messages = mongoose.model("message", messageSchema);
+const Messages = mongoose.model("Message", messageSchema);
 
 export default Messages;

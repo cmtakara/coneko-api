@@ -3,7 +3,8 @@ import express from "express";
 import dotenv from "dotenv";
 dotenv.config();
 import db from "./db/conn.mjs";
-// import Learner from './models/learners.mjs';
+
+import cors from "cors";
 
 // import users from ...
 //      for /api/user
@@ -16,6 +17,7 @@ const PORT = process.env.PORT || 5052;
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
