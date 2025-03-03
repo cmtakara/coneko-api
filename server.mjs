@@ -7,9 +7,10 @@ import db from "./db/conn.mjs";
 
 // import users from ...
 //      for /api/user
-import users from "./routes/users.mjs";
+// import users from "./routes/user.mjs";
 // import messages from ...
 //      for /api/
+import messages from "./routes/message.mjs";
 
 const PORT = process.env.PORT || 5052;
 
@@ -23,8 +24,8 @@ app.get("/", (req, res) => {
   );
 });
 
-app.use("/api/users", users);
-// app.use('/api/request-ticket', messages);
+// app.use("/api/users", users);
+app.use("/api/request-ticket", messages);
 
 app.get("/*", (req, res) => {
   res.redirect("/");
