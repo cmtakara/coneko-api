@@ -25,7 +25,7 @@ const messageSchema = new Schema([
       type: String,
     },
     gameRegion: {
-      type: string,
+      type: String,
     },
     dateTime: {
       type: Date,
