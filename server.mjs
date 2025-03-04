@@ -5,7 +5,7 @@ dotenv.config();
 import db from "./db/conn.mjs";
 
 import cors from "cors";
-
+import { requestLogger, detailedLogger } from "./middleware/logger.mjs";
 // import users from ...
 //      for /api/user
 // import users from "./routes/user.mjs";
@@ -19,6 +19,10 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+//Middleware
+app.use(requestLogger);
+app.use(detailedLogger);
 
 app.get("/", (req, res) => {
   res.send(
