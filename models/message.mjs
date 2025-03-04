@@ -38,7 +38,7 @@ const messageSchema = new Schema(
     },
     gameImage: {
       type: String,
-      default: "category",
+      default: category,
     },
     inviteCode: {
       type: String,
