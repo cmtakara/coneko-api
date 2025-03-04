@@ -12,6 +12,7 @@ import cors from "cors";
 // import messages from ...
 //      for /api/
 import message from "./routes/message.mjs";
+import validateApiKey from "./middlewares/apikeyvalidator.mjs";
 
 const PORT = process.env.PORT || 5052;
 
@@ -20,16 +21,16 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.get("/", (req, res) => {
+app.get("/",validateApiKey,(req, res) => {
   res.send(
     "This is the request-ticket api.  This page will need to be filled in with information"
   );
 });
 
 // app.use("/api/users", users);
-app.use("/api/request-ticket", message);
+app.use("/api/request-ticket",validateApiKey, message);
 
-app.get("/*", (req, res) => {
+app.get("/*" ,(req, res) => {
   res.redirect("/");
 });
 
