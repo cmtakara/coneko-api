@@ -1,8 +1,8 @@
-import Messages from "../models/message.mjs";
+import Message from "../models/message.mjs";
 
 async function seed(req, res) {
   try {
-    await Messages.create([
+    await Message.create([
       {
         user: "Player123",
         playersNeeded: 5,

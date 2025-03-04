@@ -11,7 +11,7 @@ import cors from "cors";
 // import users from "./routes/user.mjs";
 // import messages from ...
 //      for /api/
-import messages from "./routes/message.mjs";
+import message from "./routes/message.mjs";
 
 const PORT = process.env.PORT || 5052;
 
@@ -27,7 +27,7 @@ app.get("/", (req, res) => {
 });
 
 // app.use("/api/users", users);
-app.use("/api/request-ticket", messages);
+app.use("/api/request-ticket", message);
 
 app.get("/*", (req, res) => {
   res.redirect("/");
