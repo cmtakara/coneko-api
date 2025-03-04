@@ -1,5 +1,15 @@
 import Message from "../models/message.mjs";
 
+async function getAll(req, res) {
+  try {
+    const foundMessages = await Message.find({});
+    res.status(200).json(foundMessages);
+  }
+  catch (e) {
+    res.send(e).status(400);
+  }
+}
+
 async function seed(req, res) {
   try {
     await Message.create([
@@ -120,4 +130,4 @@ async function seed(req, res) {
   }
 }
 
-export default { seed };
+export default { seed, getAll };
