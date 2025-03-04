@@ -4,6 +4,7 @@ const apiKey = process.env.API_KEY;
 
 
 const validateApiKey = async (req, res, next) => {
+ 
     const providedApiKey = req.headers['x-api-key'];
     if (providedApiKey) {
         try {
