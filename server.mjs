@@ -1,18 +1,17 @@
 import express from "express";
-// import mongoose from 'mongoose';
 import dotenv from "dotenv";
-dotenv.config();
 import db from "./db/conn.mjs";
-
 import cors from "cors";
+import message from "./routes/message.mjs";
+import validateApiKey from "./middleware/apikeyvalidator.mjs";
 
+dotenv.config();
 // import users from ...
 //      for /api/user
 // import users from "./routes/user.mjs";
 // import messages from ...
 //      for /api/
-import message from "./routes/message.mjs";
-import validateApiKey from "./middlewares/apikeyvalidator.mjs";
+
 
 const PORT = process.env.PORT || 5052;
 
