@@ -2,7 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import db from "./db/conn.mjs";
 import cors from "cors";
-import message from "./routes/message.mjs";
+import { requestLogger, detailedLogger } from "./middleware/logger.mjs";import message from "./routes/message.mjs";
 import validateApiKey from "./middleware/apikeyvalidator.mjs";
 
 dotenv.config();
@@ -19,6 +19,10 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+//Middleware
+app.use(requestLogger);
+app.use(detailedLogger);
 
 app.get("/",validateApiKey,(req, res) => {
   res.send(
