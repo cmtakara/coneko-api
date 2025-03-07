@@ -9,12 +9,21 @@ async function getAll(req, res) {
   }
 }
 
-// get all user messages
-// ! add Id to user once we have users
-async function getUserMessage(req, res) {
+// get all users messages by name
+async function getUserByName(req, res) {
   try {
-    const foundUserMessage = await Message.find({ user: req.params.user });
-    res.status(200).json(foundUserMessage);
+    const foundUserByName = await Message.find({ user: req.params.user });
+    res.status(200).json(foundUserByName);
+  } catch (e) {
+    res.send(e).status(400);
+  }
+}
+
+// get user messages by Id
+async function getUserById(req, res) {
+  try {
+    const foundUserById = await Message.find({ user: req.params.user });
+    res.status(200).json(foundUserById);
   } catch (e) {
     res.send(e).status(400);
   }
@@ -151,4 +160,4 @@ async function seed(req, res) {
   }
 }
 
-export default { seed, getAll, getUserMessage, createMessage };
+export default { seed, getAll, getUserByName, createMessage, getUserById };
