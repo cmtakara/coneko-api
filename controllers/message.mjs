@@ -10,6 +10,8 @@ async function getAll(req, res) {
   }
 }
 
+// get all user messages
+// ! add Id to user once we have users 
 async function getUserMessage(req, res) {
   try{
     const foundUserMessage = await Message.find({user: req.params.user})
