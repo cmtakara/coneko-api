@@ -1,24 +1,42 @@
 import Message from "../models/message.mjs";
 
-async function getAll(req, res) {
+// get user messages by Id only ever one
+async function getUserById(req, res) {
   try {
-    const foundMessages = await Message.find({});
-    res.status(200).json(foundMessages);
-  }
-  catch (e) {
+    const foundUserById = await Message.find({ userId: req.params.userId });
+    res.status(200).json(foundUserById);
+  } catch (e) {
     res.send(e).status(400);
   }
 }
 
-// get all user messages
-// ! add Id to user once we have users 
-async function getUserMessage(req, res) {
-  try{
-    const foundUserMessage = await Message.find({user: req.params.user})
-    res.status(200).json(foundUserMessage)
+// get all users messages by name there can be many users with the same name
+async function getUserByName(req, res) {
+  try {
+    const foundUserByName = await Message.find({ user: req.params.user });
+    res.status(200).json(foundUserByName);
+  } catch (e) {
+    res.send(e).status(400);
   }
-  catch(e){
-    res.send(e).status(400); 
+}
+
+async function getAll(req, res) {
+  try {
+    const foundMessages = await Message.find({});
+    res.status(200).json(foundMessages);
+  } catch (e) {
+    res.send(e).status(400);
+  }
+}
+
+// create a new message
+async function createMessage(req, res) {
+  try {
+    const newMessage = await Message.create(req.body);
+    res.status(200).json(newMessage);
+  } catch (e) {
+    console.error(e);
+    res.status(400).send({ error: e.message });
   }
 }
 
@@ -142,4 +160,4 @@ async function seed(req, res) {
   }
 }
 
-export default { seed, getAll, getUserMessage };
+export default { seed, getAll, getUserByName, createMessage, getUserById };

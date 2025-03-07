@@ -1,9 +1,13 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
+// ! make userId required once we have user definded
 const messageSchema = new Schema(
   {
     user: {
+      type: String,
+    },
+    userId: {
       type: String,
     },
     inviteOnly: {
@@ -33,9 +37,6 @@ const messageSchema = new Schema(
     recurrences: {
       type: String,
     },
-    ongoing: {
-      type: Boolean,
-    },
     gameImage: {
       type: String,
       default: category,
@@ -55,6 +56,8 @@ const messageSchema = new Schema(
   }
 );
 
+// ** indexes user, genre, region, platform
+// frontend would like custom tags also
 const Message = mongoose.model("Message", messageSchema);
 
 export default Message;
