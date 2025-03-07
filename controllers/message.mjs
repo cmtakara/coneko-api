@@ -12,7 +12,7 @@ async function getAll(req, res) {
 
 async function getUserMessage(req, res) {
   try{
-    const foundUserMessage = await message.find({user: req.params.user})
+    const foundUserMessage = await Message.find({user: req.params.user})
     res.status(200).json(foundUserMessage)
   }
   catch(e){
@@ -140,4 +140,4 @@ async function seed(req, res) {
   }
 }
 
-export default { seed, getAll };
+export default { seed, getAll, getUserMessage };
