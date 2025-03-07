@@ -4,36 +4,32 @@ async function getAll(req, res) {
   try {
     const foundMessages = await Message.find({});
     res.status(200).json(foundMessages);
-  }
-  catch (e) {
+  } catch (e) {
     res.send(e).status(400);
   }
 }
 
 // get all user messages
-// ! add Id to user once we have users 
+// ! add Id to user once we have users
 async function getUserMessage(req, res) {
-  try{
-    const foundUserMessage = await Message.find({user: req.params.user})
-    res.status(200).json(foundUserMessage)
-  }
-  catch(e){
-    res.send(e).status(400); 
+  try {
+    const foundUserMessage = await Message.find({ user: req.params.user });
+    res.status(200).json(foundUserMessage);
+  } catch (e) {
+    res.send(e).status(400);
   }
 }
 
-
-async function createMessage(params) {
-  const{user, inviteOnly, playersNeeded, gameTitle, requestDescription, gameGenre, gameRegion, scheduledTime, recurrences, gameImage, inviteCode, platform, status} = req.body
-  try{
-    const newMessage = await Message.create(req.boby)
-    res.status(200).json(newMessage)
-  } 
-  catch (e){
-    res.send(e).status(400); 
-  } 
+// create a new message
+async function createMessage(req, res) {
+  try {
+    const newMessage = await Message.create(req.body);
+    res.status(200).json(newMessage);
+  } catch (e) {
+    console.error(e);
+    res.status(400).send({ error: e.message });
+  }
 }
-
 
 async function seed(req, res) {
   try {

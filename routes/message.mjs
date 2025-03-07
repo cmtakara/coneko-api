@@ -9,15 +9,15 @@ import messageController from "../controllers/message.mjs";
 // ! seed route to be removed later
 router.get("/seed", messageController.seed);
 
-// Index 
-// get all 
-router.get('/', messageController.getAll);
+// Index
+// get all
+router.get("/", messageController.getAll);
 
 // get all user messages
-// ! add Id to user once we have users 
-router.get("/:user", messageController.getUserMessage)
+// ! add Id to user once we have users
+router.get("/:user", messageController.getUserMessage);
 
 // post a new message
-router.post("/", messageController.createMessage)
+router.post("/", messageController.createMessage);
 
 export default router;
