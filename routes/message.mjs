@@ -6,14 +6,21 @@ import messageController from "../controllers/message.mjs";
 // all routes that start with
 //      /api/request-ticket
 
+router.use((req, res, next) => {
+  console.log("Matched route:", req.originalUrl); // Logs the current matched route
+  next(); // Move to the next handler
+});
+
 // ! seed route to be removed later
 router.get("/seed", messageController.seed);
 
-// get all user messages by Id there can only be one with a matching Id
-router.get("/:userId", messageController.getUserById);
+// get a single message by Id
+router.get("/message/:Id", messageController.getMessageById),
+  // get all user messages by Id there can only be one with a matching Id
+  router.get("/user/:userId", messageController.getUserById);
 
 // get all user messages by name there can be many with the same name
-router.get("/:user", messageController.getUserByName);
+router.get("/:username", messageController.getUserByName);
 
 // Index
 // get all

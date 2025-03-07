@@ -20,6 +20,16 @@ async function getUserByName(req, res) {
   }
 }
 
+// get a single message by the message Id
+async function getMessageById(req, res) {
+  try {
+    const foundMessage = await Message.findById(req.params.Id);
+    res.status(200).json(foundMessage);
+  } catch (e) {
+    res.send(e).status(400);
+  }
+}
+
 async function getAll(req, res) {
   try {
     const foundMessages = await Message.find({});
@@ -160,4 +170,11 @@ async function seed(req, res) {
   }
 }
 
-export default { seed, getAll, getUserByName, createMessage, getUserById };
+export default {
+  seed,
+  getAll,
+  getUserByName,
+  createMessage,
+  getUserById,
+  getMessageById,
+};
