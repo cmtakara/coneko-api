@@ -10,6 +10,18 @@ async function getAll(req, res) {
   }
 }
 
+// get all user messages
+// ! add Id to user once we have users 
+async function getUserMessage(req, res) {
+  try{
+    const foundUserMessage = await Message.find({user: req.params.user})
+    res.status(200).json(foundUserMessage)
+  }
+  catch(e){
+    res.send(e).status(400); 
+  }
+}
+
 async function seed(req, res) {
   try {
     await Message.create([
@@ -130,4 +142,4 @@ async function seed(req, res) {
   }
 }
 
-export default { seed, getAll };
+export default { seed, getAll, getUserMessage };
