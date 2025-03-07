@@ -33,9 +33,6 @@ const messageSchema = new Schema(
     recurrences: {
       type: String,
     },
-    ongoing: {
-      type: Boolean,
-    },
     gameImage: {
       type: String,
       default: "category",
@@ -55,6 +52,8 @@ const messageSchema = new Schema(
   }
 );
 
+// ** indexes user, genre, region, platform 
+// frontend would like custom tags also
 const Message = mongoose.model("Message", messageSchema);
 
 export default Message;

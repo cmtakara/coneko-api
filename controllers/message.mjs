@@ -22,6 +22,19 @@ async function getUserMessage(req, res) {
   }
 }
 
+
+async function createMessage(params) {
+  const{user, inviteOnly, playersNeeded, gameTitle, requestDescription, gameGenre, gameRegion, scheduledTime, recurrences, gameImage, inviteCode, platform, status} = req.body
+  try{
+    const newMessage = await Message.create(req.boby)
+    res.status(200).json(newMessage)
+  } 
+  catch (e){
+    res.send(e).status(400); 
+  } 
+}
+
+
 async function seed(req, res) {
   try {
     await Message.create([
@@ -142,4 +155,4 @@ async function seed(req, res) {
   }
 }
 
-export default { seed, getAll, getUserMessage };
+export default { seed, getAll, getUserMessage, createMessage };

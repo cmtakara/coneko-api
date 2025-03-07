@@ -17,4 +17,7 @@ router.get('/', messageController.getAll);
 // ! add Id to user once we have users 
 router.get("/:user", messageController.getUserMessage)
 
+// post a new message
+router.post("/", messageController.createMessage)
+
 export default router;
