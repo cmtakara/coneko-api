@@ -13,4 +13,6 @@ router.get("/seed", messageController.seed);
 // get all 
 router.get('/', messageController.getAll);
 
+router.get("/:user", messageController.getUserMessage)
+
 export default router;
