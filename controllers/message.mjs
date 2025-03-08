@@ -29,6 +29,8 @@ async function getAll(req, res) {
   }
 }
 
+//CRUD
+
 // create a new message
 async function createMessage(req, res) {
   try {
@@ -39,6 +41,26 @@ async function createMessage(req, res) {
     res.status(400).send({ error: e.message });
   }
 }
+
+// edit a new message
+const editMessage = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const updatedMessage = await Message.findByIdAndUpdate(id, req.body, {
+      new: true,
+      runValidators: true,
+    });
+
+    if (!updatedMessage) {
+      return res.status(404).json({ error: "Message not found" });
+    }
+
+    res.status(200).json(updatedMessage);
+  } catch (e) {
+    console.error(e);
+    res.status(400).json({ error: e.message });
+  }
+};
 
 async function seed(req, res) {
   try {
@@ -160,4 +182,11 @@ async function seed(req, res) {
   }
 }
 
-export default { seed, getAll, getUserByName, createMessage, getUserById };
+export default {
+  seed,
+  getAll,
+  getUserByName,
+  createMessage,
+  getUserById,
+  editMessage,
+};
