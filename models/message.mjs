@@ -1,8 +1,6 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
-//!delete before merging just wanted to quick fix to start coding and testing
-const category = "default-category-image-url.jpg";
 // ! make userId required once we have user definded
 const messageSchema = new Schema(
   {
@@ -41,7 +39,7 @@ const messageSchema = new Schema(
     },
     gameImage: {
       type: String,
-      default: category,
+      default: "category",
     },
     inviteCode: {
       type: String,
