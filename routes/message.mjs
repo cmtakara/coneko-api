@@ -29,4 +29,10 @@ router.get("/", messageController.getAll);
 // post a new message
 router.post("/", messageController.createMessage);
 
+//edit a message
+router.put("/:id", messageController.editMessage);
+
+//delete a message
+router.delete("/:id", messageController.deleteMessage);
+
 export default router;
