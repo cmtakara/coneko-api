@@ -22,4 +22,7 @@ router.get("/", messageController.getAll);
 // post a new message
 router.post("/", messageController.createMessage);
 
+//delete a message
+router.delete("/:id", messageController.deleteMessage);
+
 export default router;
