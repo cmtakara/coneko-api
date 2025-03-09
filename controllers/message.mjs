@@ -59,6 +59,28 @@ const editMessage = async (req, res) => {
   } catch (e) {
     console.error(e);
     res.status(400).json({ error: e.message });
+
+const deleteMessage = async (req, res) => {
+  try {
+    const { id } = req.params; // ✅ Extract id correctly
+
+    // ✅ Validate ObjectId format before querying
+    if (!id || id.length !== 24) {
+      return res.status(400).json({ error: "Invalid ID format" });
+    }
+
+    const deletedMessage = await Message.findByIdAndDelete(id);
+
+    if (!deletedMessage) {
+      return res.status(404).json({ error: "Message not found" });
+    }
+
+    res
+      .status(200)
+      .json({ message: "Message deleted successfully", deletedMessage });
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({ error: e.message });
   }
 };
 
@@ -189,4 +211,5 @@ export default {
   createMessage,
   getUserById,
   editMessage,
+  deleteMessage,
 };
