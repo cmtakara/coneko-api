@@ -1,7 +1,7 @@
 import Message from "../models/message.mjs";
 
 // get user messages by Id only ever one
-async function getUserById(req, res) {
+async function getMessageByUserId(req, res) {
   try {
     const foundUserById = await Message.find({ userId: req.params.userId });
     res.status(200).json(foundUserById);
@@ -11,10 +11,20 @@ async function getUserById(req, res) {
 }
 
 // get all users messages by name there can be many users with the same name
-async function getUserByName(req, res) {
+async function getMessageByUserName(req, res) {
   try {
     const foundUserByName = await Message.find({ user: req.params.user });
     res.status(200).json(foundUserByName);
+  } catch (e) {
+    res.send(e).status(400);
+  }
+}
+
+// get a single message by the message Id
+async function getMessageById(req, res) {
+  try {
+    const foundMessage = await Message.findById(req.params.Id);
+    res.status(200).json(foundMessage);
   } catch (e) {
     res.send(e).status(400);
   }
@@ -207,9 +217,10 @@ async function seed(req, res) {
 export default {
   seed,
   getAll,
-  getUserByName,
+  getMessageByUserName,
   createMessage,
-  getUserById,
+  getMessageByUserId,
+  getMessageById,
   editMessage,
   deleteMessage,
 };
