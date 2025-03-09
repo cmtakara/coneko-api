@@ -4,7 +4,7 @@ import db from "./db/conn.mjs";
 import cors from "cors";
 import { requestLogger, detailedLogger } from "./middleware/logger.mjs";import message from "./routes/message.mjs";
 import validateApiKey from "./middleware/apikeyvalidator.mjs";
-
+import errorHandler from "./middleware/errorHandler.mjs";
 dotenv.config();
 // import users from ...
 //      for /api/user
@@ -38,9 +38,7 @@ app.get("/*" ,(req, res) => {
 });
 
 // Global error handling after the routes
-app.use((err, _req, res, next) => {
-  res.status(500).send("seems like we messed up somewhere");
-});
+app.use(errorHandler);
 
 // start express server
 app.listen(PORT, () => {
