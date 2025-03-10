@@ -16,11 +16,12 @@ router.get("/seed", messageController.seed);
 
 // get a single message by Id
 router.get("/message/:Id", messageController.getMessageById),
-  // get all user messages by Id there can only be one with a matching Id
-  router.get("/user/:userId", messageController.getMessageByUserId);
+  
+// get all user messages by Id there can only be one with a matching Id
+router.get("/user/:userId", messageController.getMessageByUserId);
 
 // get all user messages by name there can be many with the same name
-router.get("/:username", messageController.getMessageByUserName);
+router.get("/:username", messageController.getMessageByUserName)
 
 // Index
 // get all
