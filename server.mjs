@@ -24,7 +24,7 @@ app.use(express.json());
 app.use(requestLogger);
 app.use(detailedLogger);
 
-app.get("/", validateApiKey, (req, res) => {
+app.get("/", (req, res) => {
   res.send(
     "This is the request-ticket api.  This page will need to be filled in with information"
   );
