@@ -23,7 +23,7 @@ async function getMessageByUserName(req, res) {
 // get a single message by the message Id
 async function getMessageById(req, res) {
   try {
-    const foundMessage = await Message.findById(req.params.Id);
+    const foundMessage = await Message.findById(req.params.id);
     res.status(200).json(foundMessage);
   } catch (e) {
     res.send(e).status(400);
@@ -69,6 +69,8 @@ const editMessage = async (req, res) => {
   } catch (e) {
     console.error(e);
     res.status(400).json({ error: e.message });
+  }
+}
 
 const deleteMessage = async (req, res) => {
   try {
@@ -147,7 +149,7 @@ async function seed(req, res) {
         gameTitle: "Minecraft",
         requestDescription: "Creating Your Moms house HAHA!",
         platform: "pc",
-        gameGenres: "adventure",
+        gameGenre: "adventure",
         gameRegion: "na",
         status: "ongoing",
         inviteCode: "MC-SERVER-12345",
@@ -158,7 +160,7 @@ async function seed(req, res) {
         gameTitle: "Call of Duty: Warzone",
         requestDescription: "Casual evening games, Call of Dutters AHOY!",
         platform: "xbox_series",
-        gameGenres: "battle_royale",
+        gameGenre: "battle_royale",
         gameRegion: "na",
         status: "scheduled",
         dateTime: "2025-03-05T20:00:00Z",
@@ -169,7 +171,7 @@ async function seed(req, res) {
         gameTitle: "FIFA 25",
         requestDescription: "Looking for all positions except GK",
         platform: "ps5",
-        gameGenres: "sports",
+        gameGenre: "sports",
         gameRegion: "eu",
         status: "ongoing",
       },
@@ -180,7 +182,7 @@ async function seed(req, res) {
         requestDescription:
           "The person reading this might be the imposter (Yoon)",
         platform: "mobile",
-        gameGenres: "party",
+        gameGenre: "party",
         gameRegion: "na",
         status: "scheduled",
         dateTime: "2025-03-09T18:00:00Z",
@@ -193,7 +195,7 @@ async function seed(req, res) {
         requestDescription:
           "Looking for Diamond+ players for weekend tournament",
         platform: "pc",
-        gameGenres: "racing",
+        gameGenre: "racing",
         gameRegion: "eu",
         status: "ongoing",
       },
@@ -203,7 +205,7 @@ async function seed(req, res) {
         gameTitle: "Jackbox Party Pack",
         requestDescription: "Hosting Jackbox Party Pack 5-9, come join!",
         platform: "pc",
-        gameGenres: "party",
+        gameGenre: "party",
         gameRegion: "na",
         status: "ongoing",
       },

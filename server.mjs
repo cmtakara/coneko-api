@@ -5,7 +5,7 @@ import cors from "cors";
 import { requestLogger, detailedLogger } from "./middleware/logger.mjs";
 import message from "./routes/message.mjs";
 import validateApiKey from "./middleware/apikeyvalidator.mjs";
-import errorHandler from "./middleware/errorHandler.mjs";
+import errorHandler from "./middleware/errorhandler.mjs";
 dotenv.config();
 // import users from ...
 //      for /api/user

@@ -15,7 +15,7 @@ router.use((req, res, next) => {
 router.get("/seed", messageController.seed);
 
 // get a single message by Id
-router.get("/message/:Id", messageController.getMessageById),
+router.get("/message/:id", messageController.getMessageById),
   
 // get all user messages by Id there can only be one with a matching Id
 router.get("/user/:userId", messageController.getMessageByUserId);
