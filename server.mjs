@@ -4,6 +4,7 @@ import db from "./db/conn.mjs";
 import cors from "cors";
 import { requestLogger, detailedLogger } from "./middleware/logger.mjs";
 import message from "./routes/message.mjs";
+import user from './routes/user.mjs';
 import validateApiKey from "./middleware/apikeyvalidator.mjs";
 import errorHandler from "./middleware/errorhandler.mjs";
 dotenv.config();
@@ -24,7 +25,7 @@ app.use(express.json());
 app.use(requestLogger);
 app.use(detailedLogger);
 
-app.get("/", validateApiKey, (req, res) => {
+app.get("/", (req, res) => {
   res.send(
     "This is the request-ticket api.  This page will need to be filled in with information"
   );
@@ -32,6 +33,7 @@ app.get("/", validateApiKey, (req, res) => {
 
 // app.use("/api/users", users);
 app.use("/api/request-ticket", validateApiKey, message);
+app.use("/api/user", validateApiKey, user);
 
 app.get("/*", (req, res) => {
   res.redirect("/");
